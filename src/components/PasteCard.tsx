@@ -14,6 +14,8 @@ export function PasteCard({ pastebody, title, date }: IPaste): JSX.Element {
     </Button>
 
     </Card.Body>
+    <Card.Footer className="text-muted">{date}</Card.Footer>
+
     </Card>
     </>
   );
