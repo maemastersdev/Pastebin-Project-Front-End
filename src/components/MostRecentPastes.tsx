@@ -4,6 +4,7 @@ import axios from "axios";
 import { IPaste } from "../types";
 import { PasteCard } from "./PasteCard";
 
+
 export function MostRecentPastes(): JSX.Element {
   const [pastes, setPastes] = useState<IPaste[]>([]);
   async function loadPastes() {
