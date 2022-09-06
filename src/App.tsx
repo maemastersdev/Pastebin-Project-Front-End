@@ -1,7 +1,14 @@
-import { greet } from "./utils/greet";
+import { MostRecentPastes } from "./components/MostRecentPastes";
+
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return(
+    <>
+      <h1>Mae and Sevgi's Paste Bin</h1>
+      <MostRecentPastes/>
+    </>
+    
+  )
 }
 
 export default App;
