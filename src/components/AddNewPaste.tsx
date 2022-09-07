@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { baseUrl } from "../utils/baseURL";
 
 export function AddNewPaste(): JSX.Element {
   const [titleInput, setTitleInput] = useState<string>("");
   const [bodyInput, setBodyInput] = useState<string>("");
   function submitPaste() {
     axios
-      .post(`https://mae-sevgi-pastebin.herokuapp.com/pastes`, {
+      .post(`${baseUrl}/pastes`, {
         pastebody: bodyInput,
         title: titleInput,
       })

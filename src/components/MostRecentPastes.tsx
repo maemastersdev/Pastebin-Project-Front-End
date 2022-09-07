@@ -4,13 +4,14 @@ import axios from "axios";
 import { IPaste } from "../types";
 import { PasteCard } from "./PasteCard";
 import { AddNewPaste } from "./AddNewPaste";
+import { baseUrl } from "../utils/baseURL";
 
 export function MostRecentPastes(): JSX.Element {
   const [pastes, setPastes] = useState<IPaste[]>([]);
   async function loadPastes() {
     try {
       const response = await axios.get(
-        `https://mae-sevgi-pastebin.herokuapp.com/pastes`
+        `${baseUrl}/pastes`
       );
       const data: IPaste[] = response.data;
       setPastes(data);
