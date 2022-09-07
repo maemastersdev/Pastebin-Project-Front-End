@@ -9,7 +9,7 @@ export function MostRecentPastes(): JSX.Element {
   async function loadPastes() {
     try {
       console.log("trying to fetch");
-      const response: any = await axios.get(
+      const response = await axios.get(
         `https://mae-sevgi-pastebin.herokuapp.com/pastes`
       );
       console.log("this is response.data.body", response.data.pastebody);
