@@ -10,9 +10,7 @@ export function MostRecentPastes(): JSX.Element {
   const [pastes, setPastes] = useState<IPaste[]>([]);
   async function loadPastes() {
     try {
-      const response = await axios.get(
-        `${baseUrl}/pastes`
-      );
+      const response = await axios.get(`${baseUrl}/pastes`);
       const data: IPaste[] = response.data;
       setPastes(data);
     } catch (err) {
