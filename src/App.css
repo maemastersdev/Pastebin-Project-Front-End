@@ -1,0 +1,8 @@
+.pastebody {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  color: red;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
