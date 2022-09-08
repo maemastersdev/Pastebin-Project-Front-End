@@ -23,7 +23,6 @@ export function MostRecentPastes(): JSX.Element {
 
   return (
     <>
-      <AddNewPaste />
       {pastes &&
         pastes.map((paste) => (
           <PasteCard
