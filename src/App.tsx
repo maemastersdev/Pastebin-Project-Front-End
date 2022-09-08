@@ -1,13 +1,20 @@
-import { MostRecentPastes } from "./components/MostRecentPastes";
 import "./App.css";
-import { AddNewPaste } from "./components/AddNewPaste";
+import { Link, Outlet } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function App(): JSX.Element {
   return (
     <>
       <h1 className="title">Mae and Sevgi's Pastebox</h1>
-      <AddNewPaste />
-      <MostRecentPastes />
+      <nav className="links">
+        <button className="linkButton">
+          <Link to="/pastes">View most recent pastes</Link>
+        </button>
+        <button>
+          <Link to="/pastes/newpaste">Add a new paste</Link>
+        </button>
+      </nav>
+      <Outlet />
     </>
   );
 }
