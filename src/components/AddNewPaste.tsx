@@ -29,7 +29,6 @@ export function AddNewPaste(): JSX.Element {
       <div className="form-group purple-border">
         <textarea
           className="form-control"
-          id="exampleFormControlTextarea4"
           rows={5}
           placeholder="type paste here..."
           value={bodyInput}
