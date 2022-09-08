@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { baseUrl } from "../utils/baseURL";
+import { Button } from "react-bootstrap";
 
 export function AddNewPaste(): JSX.Element {
   const [titleInput, setTitleInput] = useState<string>("");
@@ -16,19 +17,27 @@ export function AddNewPaste(): JSX.Element {
   }
   return (
     <>
-      <input
-        type="text"
-        placeholder="title (optional)"
-        value={titleInput}
-        onChange={(e) => setTitleInput(e.target.value)}
-      ></input>
-      <input
-        type="text"
-        placeholder="type paste here..."
-        value={bodyInput}
-        onChange={(e) => setBodyInput(e.target.value)}
-      ></input>
-      <button onClick={() => submitPaste()}>Submit</button>
+      <div className="form-outline">
+        <input
+          type="text"
+          className="form-control"
+          value={titleInput}
+          onChange={(e) => setTitleInput(e.target.value)}
+          placeholder="Title (optional)"
+        />
+      </div>
+      <div className="form-group purple-border">
+        <textarea
+          className="form-control"
+          rows={5}
+          placeholder="type paste here..."
+          value={bodyInput}
+          onChange={(e) => setBodyInput(e.target.value)}
+        ></textarea>
+      </div>
+      <Button variant="info" className="mr-1" onClick={() => submitPaste()}>
+        Submit
+      </Button>
     </>
   );
 }
