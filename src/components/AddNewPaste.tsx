@@ -8,7 +8,7 @@ export function AddNewPaste(): JSX.Element {
   const [bodyInput, setBodyInput] = useState<string>("");
   function submitPaste() {
     axios
-      .post(`${baseUrl}/pastes`, {
+      .post(`${baseUrl}/pastes/newpaste`, {
         pastebody: bodyInput,
         title: titleInput,
       })
