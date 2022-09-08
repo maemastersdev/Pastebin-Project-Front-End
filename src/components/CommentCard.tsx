@@ -5,11 +5,10 @@ import { baseUrl } from "../utils/baseURL";
 
 export function CommentCard({
   commentbody,
-  date,
+  commentdate,
   pasteid,
   commentid,
 }: IComment): JSX.Element {
-
   function handleDeleteComment(commentid: number) {
     console.log(commentid);
     console.log(pasteid);
@@ -19,17 +18,17 @@ export function CommentCard({
     <>
       <Card>
         <Card.Body>
-            <Card.Text>{commentbody}</Card.Text>
-            <Button
-              variant="info"
-              className="mr-1"
-              key={commentid}
-              onClick={() => handleDeleteComment(commentid)}
-            >
-              Delete
-            </Button>
+          <Card.Text>{commentbody}</Card.Text>
+          <Button
+            variant="info"
+            className="mr-1"
+            key={commentid}
+            onClick={() => handleDeleteComment(commentid)}
+          >
+            Delete
+          </Button>
         </Card.Body>
-        <Card.Footer className="text-muted">{date}</Card.Footer>
+        <Card.Footer className="text-muted">{commentdate}</Card.Footer>
       </Card>
     </>
   );

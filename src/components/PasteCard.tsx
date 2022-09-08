@@ -5,7 +5,12 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import { baseUrl } from "../utils/baseURL";
 
-export function PasteCard({ pastebody, title, date, id }: IPaste): JSX.Element {
+export function PasteCard({
+  pastebody,
+  title,
+  pastedate,
+  id,
+}: IPaste): JSX.Element {
   function handleDelete(id: number | undefined) {
     console.log(id);
     axios.delete(`${baseUrl}/pastes/${id}`);
@@ -29,7 +34,7 @@ export function PasteCard({ pastebody, title, date, id }: IPaste): JSX.Element {
             Delete
           </Button>
         </Card.Body>
-        <Card.Footer className="text-muted">{date}</Card.Footer>
+        <Card.Footer className="text-muted">{pastedate}</Card.Footer>
       </Card>
     </>
   );

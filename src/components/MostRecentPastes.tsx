@@ -30,7 +30,7 @@ export function MostRecentPastes(): JSX.Element {
             key={paste.id}
             pastebody={paste.pastebody}
             title={paste.title}
-            date={paste.date}
+            pastedate={paste.pastedate}
           />
         ))}
     </>
