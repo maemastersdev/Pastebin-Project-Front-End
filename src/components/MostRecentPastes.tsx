@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { IPaste } from "../types";
 import { PasteCard } from "./PasteCard";
-import { AddNewPaste } from "./AddNewPaste";
 import { baseUrl } from "../utils/baseURL";
 
 export function MostRecentPastes(): JSX.Element {
@@ -26,6 +25,7 @@ export function MostRecentPastes(): JSX.Element {
       {pastes &&
         pastes.map((paste) => (
           <PasteCard
+            id={paste.id}
             key={paste.id}
             pastebody={paste.pastebody}
             title={paste.title}
