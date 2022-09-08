@@ -22,6 +22,7 @@ export function MostRecentPastes(): JSX.Element {
 
   return (
     <>
+      <h2 className="secondTitle">Latest Ten Pastes</h2>
       {pastes &&
         pastes.map((paste) => (
           <PasteCard

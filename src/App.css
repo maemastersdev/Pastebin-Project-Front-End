@@ -27,3 +27,23 @@
   margin: 10px;
   width: 90%;
 }
+.title {
+  font-family: Baskerville, Times, "Times New Roman", serif;
+  font-size: 75px;
+  color: #ba68c8;
+  font-variant: small-caps;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px 0px 10px 0px;
+  margin: 10px;
+}
+.secondTitle {
+  font-family: Baskerville, Times, "Times New Roman", serif;
+  font-size: 45px;
+  color: #0a92ad;
+  font-variant: small-caps;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px 0px 10px 0px;
+  margin: 10px;
+}
