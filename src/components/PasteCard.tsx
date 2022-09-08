@@ -6,14 +6,13 @@ import axios from "axios";
 import { baseUrl } from "../utils/baseURL";
 
 export function PasteCard({ pastebody, title, date, id }: IPaste): JSX.Element {
-  function handleDelete(id:number|undefined){
-    console.log(id)
-    axios.delete(`${baseUrl}/pastes/${id}`)
-   
+  function handleDelete(id: number | undefined) {
+    console.log(id);
+    axios.delete(`${baseUrl}/pastes/${id}`);
   }
   return (
     <>
-      <Card>
+      <Card className="pasteCard">
         {title !== null && <Card.Header>{title}</Card.Header>}
         <Card.Body>
           {" "}
@@ -21,7 +20,12 @@ export function PasteCard({ pastebody, title, date, id }: IPaste): JSX.Element {
           <Button variant="info" className="mr-1">
             Expand...
           </Button>
-          <Button variant="info" className="mr-1" key={id} onClick={()=>handleDelete(id)}>
+          <Button
+            variant="info"
+            className="mr-1"
+            key={id}
+            onClick={() => handleDelete(id)}
+          >
             Delete
           </Button>
         </Card.Body>
