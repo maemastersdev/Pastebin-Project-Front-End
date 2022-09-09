@@ -4,6 +4,9 @@ import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { baseUrl } from "../utils/baseURL";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
 
 export function PasteCard({
   pastebody,
@@ -11,13 +14,13 @@ export function PasteCard({
   pastedate,
   id,
 }: IPaste): JSX.Element {
-  function handleDelete(id: number | undefined) {
+  const [selectedPasteid, setSelectedPasteid] = useState<number>();
+  async function handleDelete(id: number | undefined) {
     console.log(id);
-    axios.delete(`${baseUrl}/pastes/${id}`);
+    await axios.delete(`${baseUrl}/pastes/${id}`);
+   
   }
-  function handleExpand(id: number | undefined) {
-    console.log(id);
-  }
+
   return (
     <>
       <Card className="pasteCard">
@@ -25,12 +28,10 @@ export function PasteCard({
         <Card.Body>
           {" "}
           <Card.Text className="pastebody">{pastebody} </Card.Text>
-          <Button
-            variant="info"
-            className="mr-1"
-            onClick={() => handleExpand(id)}
-          >
-            Expand...
+          <Button variant="info" className="mr-1">
+            <Link to={`/pastes/${id}`} key={id}>
+              Expand...
+            </Link>
           </Button>
           <Button
             variant="info"
@@ -46,3 +47,7 @@ export function PasteCard({
     </>
   );
 }
+function loadPastes() {
+  throw new Error("Function not implemented.");
+}
+
