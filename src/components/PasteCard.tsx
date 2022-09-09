@@ -15,6 +15,9 @@ export function PasteCard({
     console.log(id);
     axios.delete(`${baseUrl}/pastes/${id}`);
   }
+  function handleExpand(id: number | undefined) {
+    console.log(id);
+  }
   return (
     <>
       <Card className="pasteCard">
@@ -22,7 +25,11 @@ export function PasteCard({
         <Card.Body>
           {" "}
           <Card.Text className="pastebody">{pastebody} </Card.Text>
-          <Button variant="info" className="mr-1">
+          <Button
+            variant="info"
+            className="mr-1"
+            onClick={() => handleExpand(id)}
+          >
             Expand...
           </Button>
           <Button
