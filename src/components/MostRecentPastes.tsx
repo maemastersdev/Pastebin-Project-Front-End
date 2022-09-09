@@ -18,8 +18,8 @@ export function MostRecentPastes(): JSX.Element {
   }
   useEffect(() => {
     loadPastes();
-  }, [pastes]);
-
+  }, [setPastes]);
+console.log(1)
   return (
     <>
       <h2 className="secondTitle">Latest Ten Pastes</h2>
