@@ -19,7 +19,7 @@ export function MostRecentPastes(): JSX.Element {
   useEffect(() => {
     loadPastes();
   }, [setPastes]);
-console.log(1)
+  console.log(1);
   return (
     <>
       <h2 className="secondTitle">Latest Ten Pastes</h2>

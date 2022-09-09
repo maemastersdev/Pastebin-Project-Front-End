@@ -7,7 +7,6 @@ import { baseUrl } from "../utils/baseURL";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-
 export function PasteCard({
   pastebody,
   title,
@@ -18,7 +17,6 @@ export function PasteCard({
   async function handleDelete(id: number | undefined) {
     console.log(id);
     await axios.delete(`${baseUrl}/pastes/${id}`);
-   
   }
 
   return (
@@ -50,4 +48,3 @@ export function PasteCard({
 function loadPastes() {
   throw new Error("Function not implemented.");
 }
-

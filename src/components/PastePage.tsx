@@ -21,11 +21,10 @@ export function PastePage(): JSX.Element {
       console.error(err);
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     loadSelectedPaste();
-  },[setPaste])
-    console.log("this is paste" , paste)
- 
+  }, [setPaste]);
+  console.log("this is paste", paste);
 
   async function loadComments() {
     try {
@@ -46,7 +45,7 @@ export function PastePage(): JSX.Element {
 
   return (
     <>
-      {paste&&(
+      {paste && (
         <Card className="pasteCard">
           {paste.title !== null && <Card.Header>{paste.title}</Card.Header>}
           <Card.Body>
