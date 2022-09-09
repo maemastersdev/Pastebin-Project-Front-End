@@ -52,5 +52,23 @@
   display: flexbox;
 }
 .linkButton {
-  background-color: #ba68c8;
+  background-color: #d18add;
+  border-radius: 10px;
+  border: none;
+  margin:5px;
+  padding:10px;
+}
+.homePageButton{
+  background-color: #d18add;
+  border-radius: 10px;
+  border: none;
+  margin:5px;
+  padding:10px;
+}
+.addPasteButton{
+  background-color: #d18add;
+  border-radius: 10px;
+  border: none;
+  margin: 5px;
+  padding: 10px;
 }
