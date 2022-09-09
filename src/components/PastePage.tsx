@@ -63,6 +63,7 @@ export function PastePage(): JSX.Element {
           <Card.Footer className="text-muted">{paste.pastedate}</Card.Footer>
         </Card>
       )}
+      <h2 className="secondTitle">Comments</h2>
       {comments &&
         comments.map((comment) => (
           <CommentCard
