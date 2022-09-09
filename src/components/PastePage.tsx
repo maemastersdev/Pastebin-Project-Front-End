@@ -16,15 +16,14 @@ export function PastePage(): JSX.Element {
       const response = await axios.get(`${baseUrl}/pastes/${id}`);
       const pasteData: IPaste = response.data[0];
       setPaste(pasteData);
-      console.log(paste);
     } catch (err) {
       console.error(err);
     }
   }
   useEffect(() => {
     loadSelectedPaste();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setPaste]);
-  console.log("this is paste", paste);
 
   async function loadComments() {
     try {
@@ -37,6 +36,7 @@ export function PastePage(): JSX.Element {
   }
   useEffect(() => {
     loadComments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setComments]);
   function handleDeletePaste(id: string | undefined) {
     axios.delete(`${baseUrl}/pastes/${id}`);
