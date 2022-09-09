@@ -1,6 +1,5 @@
 import "./App.css";
 import { Link, Outlet } from "react-router-dom";
-import { Button } from "react-bootstrap";
 
 function App(): JSX.Element {
   return (
@@ -8,7 +7,7 @@ function App(): JSX.Element {
       <h1 className="title">Mae and Sevgi's Pastebox</h1>
       <nav className="links">
         <button className="homePageButton">
-          <Link to ="/">HomePage</Link>
+          <Link to="/">HomePage</Link>
         </button>
         <button className="linkButton">
           <Link to="/pastes">View most recent pastes</Link>

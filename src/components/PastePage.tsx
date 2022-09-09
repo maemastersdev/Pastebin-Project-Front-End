@@ -12,7 +12,7 @@ interface IPastePage {
 
 export function PastePage(
   { pastebody, title, id, pastedate }: IPaste,
-  { commentbody, commentdate, commentid, pasteid }: IComment
+  { commentbody, commentdate, commentid }: IComment
 ): JSX.Element {
   const [comments, setComments] = useState<IComment[]>([]);
   async function loadComments() {
@@ -49,13 +49,15 @@ export function PastePage(
         </Card.Body>
         <Card.Footer className="text-muted">{pastedate}</Card.Footer>
       </Card>
+
       {comments &&
         comments.map((comment) => (
           <CommentCard
-            commentbody={commentbody}
-            commentid={commentid}
-            commentdate={commentdate}
-            pasteid={pasteid}
+            key={comment.commentid}
+            commentbody={comment.commentbody}
+            commentid={comment.commentid}
+            commentdate={comment.commentdate}
+            pasteid={comment.pasteid}
           />
         ))}
     </>
