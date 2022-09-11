@@ -4,20 +4,13 @@ import axios from "axios";
 import { IPaste } from "../types";
 import { PasteCard } from "./PasteCard";
 import { baseUrl } from "../utils/baseURL";
+import { loadPastes } from "../utils/loadPastes";
 
 export function MostRecentPastes(): JSX.Element {
   const [pastes, setPastes] = useState<IPaste[]>([]);
-  async function loadPastes() {
-    try {
-      const response = await axios.get(`${baseUrl}/pastes`);
-      const data: IPaste[] = response.data;
-      setPastes(data);
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  
   useEffect(() => {
-    loadPastes();
+    loadPastes(setPastes);
   }, [setPastes]);
 
   return (
