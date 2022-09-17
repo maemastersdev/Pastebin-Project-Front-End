@@ -4,6 +4,8 @@ import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { IComment, IPaste } from "../types";
 import { baseUrl } from "../utils/baseURL";
+import { loadComments } from "../utils/loadComments";
+import { AddNewComment } from "./AddNewComment";
 import { CommentCard } from "./CommentCard";
 
 export function PastePage(): JSX.Element {
@@ -11,6 +13,7 @@ export function PastePage(): JSX.Element {
 
   const [paste, setPaste] = useState<IPaste>();
   const [comments, setComments] = useState<IComment[]>([]);
+
   async function loadSelectedPaste() {
     try {
       const response = await axios.get(`${baseUrl}/pastes/${id}`);
@@ -25,23 +28,14 @@ export function PastePage(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setPaste]);
 
-  async function loadComments() {
-    try {
-      const response = await axios.get(`${baseUrl}/pastes/${id}/comments`);
-      const data: IComment[] = response.data;
-      setComments(data);
-    } catch (err) {
-      console.error(err);
-    }
+  async function handleDelete(id: string | undefined) {
+    console.log(id);
+    await axios.delete(`${baseUrl}/pastes/${id}`);
   }
+
   useEffect(() => {
-    loadComments();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setComments]);
-  function handleDeletePaste(id: string | undefined) {
-    axios.delete(`${baseUrl}/pastes/${id}`);
-  }
-  console.log(paste);
+    loadComments(setComments, id);
+  }, [setComments, id]);
 
   return (
     <>
@@ -55,7 +49,7 @@ export function PastePage(): JSX.Element {
               variant="info"
               className="mr-1"
               key={id}
-              onClick={() => handleDeletePaste(id)}
+              onClick={() => handleDelete(id)}
             >
               Delete
             </Button>
@@ -63,15 +57,17 @@ export function PastePage(): JSX.Element {
           <Card.Footer className="text-muted">{paste.pastedate}</Card.Footer>
         </Card>
       )}
-      <h2 className="secondTitle">Comments</h2>
+      <AddNewComment setComments={setComments} />
       {comments &&
         comments.map((comment) => (
           <CommentCard
             key={comment.commentid}
             commentbody={comment.commentbody}
             commentid={comment.commentid}
-            commentdate={comment.commentdate}
+            date={comment.date}
             pasteid={comment.pasteid}
+            setComments={setComments}
+            id={id}
           />
         ))}
     </>

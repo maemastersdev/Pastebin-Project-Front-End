@@ -1,22 +1,17 @@
 //IMPORTS
-import { IPaste } from "../types";
+import { IPasteCard } from "../types";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import axios from "axios";
-import { baseUrl } from "../utils/baseURL";
 import { Link } from "react-router-dom";
+import { handleDelete } from "../utils/deletePaste";
 
 export function PasteCard({
+  id,
   pastebody,
   title,
   pastedate,
-  id,
-}: IPaste): JSX.Element {
-  async function handleDelete(id: number | undefined) {
-    console.log(id);
-    await axios.delete(`${baseUrl}/pastes/${id}`);
-  }
-
+  setPastes,
+}: IPasteCard): JSX.Element {
   return (
     <>
       <Card className="pasteCard">
@@ -33,7 +28,7 @@ export function PasteCard({
             variant="info"
             className="mr-1"
             key={id}
-            onClick={() => handleDelete(id)}
+            onClick={() => handleDelete(setPastes, id)}
           >
             Delete
           </Button>

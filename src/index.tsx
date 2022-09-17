@@ -14,7 +14,6 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route path="/pastes" element={<MostRecentPastes />} />
           <Route path="/pastes/:id" element={<PastePage />} />
-
           <Route path="/pastes/newpaste" element={<AddNewPaste />} />
         </Route>
       </Routes>
