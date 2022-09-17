@@ -5,7 +5,7 @@ import { baseUrl } from "../utils/baseURL";
 
 export function CommentCard({
   commentbody,
-  commentdate,
+  date,
   pasteid,
   commentid,
 }: IComment): JSX.Element {
@@ -14,9 +14,10 @@ export function CommentCard({
     console.log(pasteid);
     axios.delete(`${baseUrl}/pastes/${pasteid}/comments/${commentid}`);
   }
+
   return (
     <>
-      <Card>
+      <Card className="comment-card">
         <Card.Body>
           <Card.Text>{commentbody}</Card.Text>
           <Button
@@ -28,7 +29,7 @@ export function CommentCard({
             Delete
           </Button>
         </Card.Body>
-        <Card.Footer className="text-muted">{commentdate}</Card.Footer>
+        <Card.Footer className="text-muted">{date}</Card.Footer>
       </Card>
     </>
   );

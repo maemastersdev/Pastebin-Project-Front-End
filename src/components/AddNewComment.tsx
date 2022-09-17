@@ -1,0 +1,32 @@
+import axios from "axios";
+import { useState } from "react";
+import { Button } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { baseUrl } from "../utils/baseURL";
+
+export function AddNewComment(): JSX.Element {
+  const { id } = useParams();
+  const [commentInput, setCommentInput] = useState<string>("");
+  async function submitComment() {
+    axios
+      .post(`${baseUrl}/pastes/${id}/comments`, {
+        commentbody: commentInput,
+      })
+      .then(() => setCommentInput(""));
+  }
+  return (
+    <>
+      <h2 className="secondTitle">Comments</h2>
+      <input
+        placeholder="type comment here"
+        type="text"
+        value={commentInput}
+        onChange={(e) => setCommentInput(e.target.value)}
+        className="form-control"
+      ></input>
+      <Button variant="info" className="mr-1" onClick={() => submitComment()}>
+        Submit
+      </Button>
+    </>
+  );
+}
