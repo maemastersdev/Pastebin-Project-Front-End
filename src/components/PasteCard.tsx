@@ -3,7 +3,6 @@ import { IPasteCard } from "../types";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { loadPastes } from "../utils/loadPastes";
 import { handleDelete } from "../utils/deletePaste";
 
 export function PasteCard({

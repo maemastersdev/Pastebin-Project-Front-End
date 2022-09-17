@@ -1,9 +1,6 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { IPaste } from "../types";
 import { PasteCard } from "./PasteCard";
-import { baseUrl } from "../utils/baseURL";
 import { loadPastes } from "../utils/loadPastes";
 
 export function MostRecentPastes(): JSX.Element {

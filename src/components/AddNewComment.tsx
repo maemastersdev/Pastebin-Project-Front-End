@@ -2,9 +2,14 @@ import axios from "axios";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { IComment } from "../types";
 import { baseUrl } from "../utils/baseURL";
+import { loadComments } from "../utils/loadComments";
 
-export function AddNewComment(): JSX.Element {
+interface IAddNewComment {
+  setComments: React.Dispatch<React.SetStateAction<IComment[]>>;
+}
+export function AddNewComment({ setComments }: IAddNewComment): JSX.Element {
   const { id } = useParams();
   const [commentInput, setCommentInput] = useState<string>("");
   async function submitComment() {
@@ -12,7 +17,8 @@ export function AddNewComment(): JSX.Element {
       .post(`${baseUrl}/pastes/${id}/comments`, {
         commentbody: commentInput,
       })
-      .then(() => setCommentInput(""));
+      .then(() => setCommentInput(""))
+      .then(() => loadComments(setComments, id));
   }
   return (
     <>

@@ -4,8 +4,7 @@ import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { IComment, IPaste } from "../types";
 import { baseUrl } from "../utils/baseURL";
-import { handleDelete } from "../utils/deletePaste";
-import { loadPastes } from "../utils/loadPastes";
+import { loadComments } from "../utils/loadComments";
 import { AddNewComment } from "./AddNewComment";
 import { CommentCard } from "./CommentCard";
 
@@ -29,23 +28,14 @@ export function PastePage(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setPaste]);
 
-  async function loadComments() {
-    try {
-      const response = await axios.get(`${baseUrl}/pastes/${id}/comments`);
-      const data: IComment[] = response.data;
-      setComments(data);
-    } catch (err) {
-      console.error(err);
-    }
-  }
   async function handleDelete(id: string | undefined) {
     console.log(id);
     await axios.delete(`${baseUrl}/pastes/${id}`);
   }
 
   useEffect(() => {
-    loadComments();
-  }, [setComments]);
+    loadComments(setComments, id);
+  }, [setComments, id]);
 
   return (
     <>
@@ -67,7 +57,7 @@ export function PastePage(): JSX.Element {
           <Card.Footer className="text-muted">{paste.pastedate}</Card.Footer>
         </Card>
       )}
-      <AddNewComment />
+      <AddNewComment setComments={setComments} />
       {comments &&
         comments.map((comment) => (
           <CommentCard
@@ -76,6 +66,8 @@ export function PastePage(): JSX.Element {
             commentid={comment.commentid}
             date={comment.date}
             pasteid={comment.pasteid}
+            setComments={setComments}
+            id={id}
           />
         ))}
     </>
